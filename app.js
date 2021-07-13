@@ -1,5 +1,4 @@
 const express = require('express');
-const axios = require('axios');
 const ExpressError = require('./ExpressError');
 const carRoutes = require('./carsRoutes');
 
