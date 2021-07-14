@@ -16,6 +16,7 @@ const App = () => {
 
                 <div className="search_container">
                     <SearchGroup setTableData={setTableData} />
+
                     <TotalVehiclesTable
                         totalVehiclesData={{
                             totalNum: tableData.totalNumFacetedSearchMatch,
@@ -25,6 +26,7 @@ const App = () => {
                         }}
                     />
                     <MakeModelMatchesTable resultsByMakesModels={tableData.colatedResults} />
+                    {!tableData.totalNumFacetedSearchMatch ? <h3>No results</h3> : null}
                 </div>
             </div>
         </div>

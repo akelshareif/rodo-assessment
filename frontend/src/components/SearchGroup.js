@@ -25,15 +25,20 @@ const SearchGroup = ({ setTableData }) => {
     // useEffect hooks will retrieve and populate model and year options
     useEffect(() => {
         const fetchData = async () => {
-            const { data } = await axios.post('http://localhost:3000/cars', {
-                make: searchData.make,
-            });
+            try {
+                const { data } = await axios.post('http://localhost:3000/cars', {
+                    make: searchData.make,
+                });
 
-            setModels(data.colatedResults);
+                setModels(data.colatedResults);
+            } catch (err) {
+                setModels([]);
+                setTableData({});
+            }
         };
 
         fetchData();
-    }, [searchData.make]);
+    }, [searchData.make, setTableData]);
 
     useEffect(() => {
         const car = models.filter((car) => car.model === searchData.model);
@@ -55,10 +60,13 @@ const SearchGroup = ({ setTableData }) => {
     // Function that will run once the form is submitted
     const handleSubmit = async (e) => {
         e.preventDefault();
+        try {
+            const { data } = await axios.post('http://localhost:3000/cars', searchData);
 
-        const { data } = await axios.post('http://localhost:3000/cars', searchData);
-
-        setTableData(data);
+            setTableData(data);
+        } catch (err) {
+            setTableData({});
+        }
     };
 
     return (

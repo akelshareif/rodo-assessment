@@ -3,6 +3,12 @@
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "json-server": "^0.16.3"
+    "json-server": "^0.16.3",
+    "nodemon": "^2.0.12"
+  },
+  "scripts": {
+    "get": "npm install && cd ./frontend && npm install && cd ..",
+    "startDB": "npx json-server --watch server.js --port 3004",
+    "startServer": "nodemon app.js"
   }
 }
