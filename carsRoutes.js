@@ -3,15 +3,6 @@ const axios = require('axios');
 const router = express.Router();
 const { colateModelsAndCount } = require('./helperFxns');
 
-// Root route
-router.get('/', async (req, res, next) => {
-    try {
-        res.send('This is working');
-    } catch (err) {
-        return next(err);
-    }
-});
-
 // Search route
 router.post('/', async (req, res, next) => {
     try {

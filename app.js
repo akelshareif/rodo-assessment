@@ -1,10 +1,12 @@
 const express = require('express');
+const cors = require('cors');
 const ExpressError = require('./ExpressError');
 const carRoutes = require('./carsRoutes');
 
 const app = express();
 
-// Middleware to parse both form and JSON data
+// Middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
